@@ -1,7 +1,8 @@
 package com.vmoskvyak.selectcar.di.builder
 
-import com.vmoskvyak.selectcar.ui.fragments.details.ManufactureDetailsFragment
-import com.vmoskvyak.selectcar.ui.fragments.main.ManufacturersFragment
+import com.vmoskvyak.selectcar.ui.fragments.BuiltDatesFragment
+import com.vmoskvyak.selectcar.ui.fragments.MainTypesFragment
+import com.vmoskvyak.selectcar.ui.fragments.ManufacturersFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -9,9 +10,12 @@ import dagger.android.ContributesAndroidInjector
 abstract class FragmentBuilder {
 
     @ContributesAndroidInjector
-    abstract fun contributeCarsListFragment(): ManufacturersFragment
+    abstract fun contributeManufacturersFragment(): ManufacturersFragment
 
     @ContributesAndroidInjector
-    abstract fun contributeCarDetailsFragment(): ManufactureDetailsFragment
+    abstract fun contributeMainTypesFragment(): MainTypesFragment
+
+    @ContributesAndroidInjector
+    abstract fun contribureBuiltDatesFragment(): BuiltDatesFragment
 
 }

@@ -3,7 +3,7 @@ package com.vmoskvyak.selectcar.network.model
 import com.google.gson.annotations.SerializedName
 import com.vmoskvyak.selectcar.BuildConfig
 
-class MainTypesModel {
+class VehicleModel {
 
     @SerializedName("page")
     var page: Int = 0
@@ -15,6 +15,6 @@ class MainTypesModel {
     var totalPageCount: Int = 0
 
     @SerializedName(BuildConfig.DATA_KEY)
-    var mainTypesMap: Map<String, String> = HashMap()
+    var dataMap: Map<String, String> = HashMap()
 
 }

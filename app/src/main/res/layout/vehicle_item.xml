@@ -5,22 +5,22 @@
 
         <variable
             name="viewModel"
-            type="com.vmoskvyak.selectcar.ui.fragments.main.ManufacturerItemViewModel" />
+            type="com.vmoskvyak.selectcar.ui.fragments.viewmodel.VehicleItemViewModel" />
         <variable
             name="click"
-            type="com.vmoskvyak.selectcar.ui.adapters.ManufacturerAdapter.OnManufacturerItemClickListener"/>
+            type="com.vmoskvyak.selectcar.ui.adapters.VehiclesAdapter.OnVehicleItemClickListener"/>
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:onClick="@{() -> click.onManufacturerItemClick(viewModel)}">
+        android:onClick="@{() -> click.onVehicleItemClick(viewModel)}">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="@{viewModel.getName()}"
+            android:text="@{viewModel.getText()}"
             android:textSize="18sp" />
 
     </LinearLayout>

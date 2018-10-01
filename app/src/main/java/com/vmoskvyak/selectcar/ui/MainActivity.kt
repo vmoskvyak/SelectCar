@@ -3,7 +3,7 @@ package com.vmoskvyak.selectcar.ui
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import com.vmoskvyak.selectcar.R
-import com.vmoskvyak.selectcar.ui.fragments.main.ManufacturersFragment
+import com.vmoskvyak.selectcar.ui.fragments.ManufacturersFragment
 import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity() {

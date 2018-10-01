@@ -5,27 +5,27 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.arch.paging.LivePagedListBuilder
 import android.arch.paging.PagedList
-import com.vmoskvyak.selectcar.datasource.details.GetManufactureDetailsDataSourceFactory
+import com.vmoskvyak.selectcar.datasource.builtdates.GetBuiltDatesDataSourceFactory
 import com.vmoskvyak.selectcar.network.data.VehicleData
 import com.vmoskvyak.selectcar.repository.CarsRepository
 import javax.inject.Inject
 
-class ManufactureDetailsViewModel
+class BuiltDatesViewModel
 @Inject constructor(private var carsRepository: CarsRepository) : ViewModel() {
-
-    val requestStatus: MutableLiveData<String> = MutableLiveData()
 
     private val pagedListConfig = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
             .setInitialLoadSizeHint(10)
             .setPageSize(10).build()
 
-    fun loadManufactureDetails(manufacturerId: String): LiveData<PagedList<VehicleData>> {
+    val requestStatus: MutableLiveData<String> = MutableLiveData()
 
-        val manufactureDetailsFactory = GetManufactureDetailsDataSourceFactory(
-                manufacturerId, carsRepository, requestStatus)
+    fun loadBuiltDates(manufacturerId: String, mainTypeId: String): LiveData<PagedList<VehicleData>> {
 
-        return LivePagedListBuilder(manufactureDetailsFactory, pagedListConfig)
+        val dataSourceFactory = GetBuiltDatesDataSourceFactory(
+                manufacturerId, mainTypeId, carsRepository, requestStatus)
+
+        return LivePagedListBuilder(dataSourceFactory, pagedListConfig)
                 .build()
     }
 
