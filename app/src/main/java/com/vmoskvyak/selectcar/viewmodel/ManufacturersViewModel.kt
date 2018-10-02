@@ -17,8 +17,8 @@ constructor(private var carsRepository: CarsRepository) : ViewModel() {
 
     private val pagedListConfig = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
-            .setInitialLoadSizeHint(10)
-            .setPageSize(10).build()
+            .setInitialLoadSizeHint(15)
+            .setPageSize(15).build()
 
     fun loadManufacturers(): LiveData<PagedList<VehicleData>> {
 

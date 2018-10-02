@@ -24,6 +24,7 @@ class ManufacturersFragment: BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
+        (activity as MainActivity).setToolbarTitle(getString(R.string.app_name))
 
         adapter = VehiclesAdapter()
         recyclerView.adapter = adapter
@@ -43,11 +44,13 @@ class ManufacturersFragment: BaseFragment() {
 
     private fun initOnManufactureClick() {
         adapter.manufacturerClickListener = object : OnManufactureItemClickListener {
-            override fun onItemClick(manufacturerId: String) {
-                fragmentManager?.
-                        beginTransaction()?.
-                        add(R.id.fl_container,
-                                MainTypesFragment.newInstance(manufacturerId),
+            override fun onItemClick(manufacturerId: String, manufactureName: String) {
+                val fragmentTransaction = fragmentManager?.beginTransaction()
+                fragmentTransaction?.
+                        setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                fragmentTransaction?.
+                        replace(R.id.fl_container,
+                                MainTypesFragment.newInstance(manufacturerId, manufactureName),
                                 MainTypesFragment.TAG)?.
                         addToBackStack(TAG)?.
                         commit()

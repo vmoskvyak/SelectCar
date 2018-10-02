@@ -17,8 +17,8 @@ class MainTypesViewModel
 
     private val pagedListConfig = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
-            .setInitialLoadSizeHint(10)
-            .setPageSize(10).build()
+            .setInitialLoadSizeHint(15)
+            .setPageSize(15).build()
 
     fun loadManufactureDetails(manufacturerId: String): LiveData<PagedList<VehicleData>> {
 

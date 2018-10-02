@@ -28,6 +28,7 @@ class MainTypesFragment: BaseFragment() {
         if (arguments == null) return binding.root
 
         val manufactureId = arguments?.getString(MANUFACTURE_ID_ARG)
+        (activity as MainActivity).setToolbarTitle(arguments?.getString(MANUFACTURE_NAME_ARG))
 
         initAdapter(manufactureId)
 
@@ -54,9 +55,11 @@ class MainTypesFragment: BaseFragment() {
     private fun initOnMainTypeClick() {
         adapter.mainTypeClickListener = object : OnMainTypeItemClickListener {
             override fun onItemClick(manufactureId: String, mainTypeId: String) {
-                fragmentManager?.
-                        beginTransaction()?.
-                        add(R.id.fl_container,
+                val fragmentTransaction = fragmentManager?.beginTransaction()
+                fragmentTransaction?.
+                        setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
+                fragmentTransaction?.
+                        replace(R.id.fl_container,
                                 BuiltDatesFragment.newInstance(manufactureId, mainTypeId),
                                 BuiltDatesFragment.TAG)?.
                         addToBackStack(TAG)?.
@@ -67,13 +70,15 @@ class MainTypesFragment: BaseFragment() {
 
     companion object {
         const val TAG = "MainTypesFragment"
-        const val MANUFACTURE_ID_ARG = "manufacture.id.arg"
+        private const val MANUFACTURE_ID_ARG = "manufacture.id.arg"
+        private const val MANUFACTURE_NAME_ARG = "manufacture.name.arg"
 
-        fun newInstance(manufactureId: String): MainTypesFragment {
+        fun newInstance(manufactureId: String, manufactureName: String): MainTypesFragment {
             val detailsFragment = MainTypesFragment()
             val args = Bundle()
 
             args.putString(MANUFACTURE_ID_ARG, manufactureId)
+            args.putString(MANUFACTURE_NAME_ARG, manufactureName)
             detailsFragment.arguments = args
 
             return detailsFragment

@@ -26,6 +26,7 @@ class BuiltDatesFragment : BaseFragment() {
         if (arguments == null) return binding.root
         val manufactureId = arguments?.getString(MANUFACTURE_ID_ARG)
         val mainTypeId = arguments?.getString(MAIN_TYPE_ID_ARG)
+        (activity as MainActivity).setToolbarTitle(mainTypeId)
 
         adapter = VehiclesAdapter()
         recyclerView.adapter = adapter

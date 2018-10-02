@@ -15,8 +15,8 @@ class BuiltDatesViewModel
 
     private val pagedListConfig = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
-            .setInitialLoadSizeHint(10)
-            .setPageSize(10).build()
+            .setInitialLoadSizeHint(15)
+            .setPageSize(15).build()
 
     val requestStatus: MutableLiveData<String> = MutableLiveData()
 

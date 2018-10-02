@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.vmoskvyak.selectcar.ui.fragments.viewmodel.VehicleItemViewModel" />
+
+        <variable
+            name="click"
+            type="com.vmoskvyak.selectcar.ui.adapters.VehiclesAdapter.OnVehicleItemClickListener" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="@color/background_color_odd"
+        android:onClick="@{() -> click.onVehicleItemClick(viewModel)}"
+        card_view:cardUseCompatPadding="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:padding="16dp"
+            android:text="@{viewModel.getText()}"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+    </android.support.v7.widget.CardView>
+</layout>
